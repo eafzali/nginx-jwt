@@ -25,7 +25,7 @@ local M = {}
 function M.auth(claim_specs)
     local args = ngx.req.get_uri_args()
     -- require Authorization request header
-    local auth_header = ngx.var.http_Authorization or args.auth
+    local auth_header = ngx.var.http_Authorization or "Bearer " .. args.auth
 
     if auth_header == nil then
         ngx.log(ngx.WARN, "No Authorization header")
